@@ -1,8 +1,8 @@
 ## Table of contents
 
 * [General info]()
-* Tecnologies
-* Setup
+* [Tecnologies]
+* [Setup]
 
 ## General info
 This project is simple Lorem ipsum dolor generator
