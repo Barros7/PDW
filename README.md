@@ -15,5 +15,8 @@ Project is created width:
 * Amet library version: 999 
 
 ## Setup
-To run this project, install it locally using npm
+To run this project, install it locally using npm:
+_$ cd ../lorem_
+_$ npm install_ 
+_$ npm start_
 
