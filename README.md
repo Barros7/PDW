@@ -22,6 +22,5 @@ _$ cd ../lorem_
 ~~~
 _$ npm install_ 
 ~~~
-~~~
 _$ npm start_
 ~~~
