@@ -1,6 +1,6 @@
 ## Table of contents
 
-* General info
+* [General info]()
 * Tecnologies
 * Setup
 
@@ -18,8 +18,5 @@ Project is created width:
 To run this project, install it locally using npm:
 ~~~
 _$ cd ../lorem_
-~~~
 _$ npm install_ 
-~~~
 _$ npm start_
-~~~
