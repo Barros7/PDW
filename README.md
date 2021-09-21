@@ -1,13 +1,13 @@
 # Plataforma de Desenvolvimento Web
 ## Ficha 1
 ### Comandos do git
- _git init_ 
+ 1. git init 
  inicializa ou reinicializa o repositório
- _git add nomeDoficheiroAqui_
+ 2. git add nomeDoficheiroAqui
  Adiciona o ficheiro especificado na stage
- _git add ._
+ 3. git add .
  Adiciona todos ficheiros à stage
-_git commit -m "descrição aqui"_
+4. git commit -m "descrição aqui"
 Move o ficheiro da stage para o repositório
- 
+
  
