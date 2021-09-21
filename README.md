@@ -1,11 +1,18 @@
-# Plataforma de Desenvolvimento Web
-## Ficha 1
-### Comandos do git
-1. git init 
- inicializa ou reinicializa o repositório
-2. git add nomeDoficheiroAqui
- Adiciona o ficheiro especificado na stage
-3. git add .
- Adiciona todos ficheiros à stage
-4. git commit -m "descrição aqui"
-Move o ficheiro da stage para o repositório
+## Table of contents
+
+General info
+Tecnologies
+Setup
+
+## General info
+This project is simple Lorem ipsum dolor generator
+
+## Tecnologies
+Project is created width:
+Lorem version: 12.3
+Ipsum version: 2.33
+Amet library version: 999 
+
+## Setup
+To run this project, install it locally using npm
+
