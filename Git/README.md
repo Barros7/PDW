@@ -6,6 +6,235 @@ cd minhapasta => abrir pasta
 ~~~
 
 # Comandos essenciais do Git
+
+### Configurar o nome
+
+git config --global user.name "Leonardo Comelli"
+
+### Configurar email
+
+git config --global user.email leonardo@software-ltda.com.br
+
+### Configurar o editor
+
+git config --global core.editor vim/nano...
+
+### Configurar ferramenta de merge
+
+git config --global merge.tool vimdiff
+
+### Configurar o nome ficheiros a serem ignorados
+
+git config --global core.excludesfile ~/.gitignore
+
+### Listar configurações
+
+git config --list
+
+### Ignorar ficheiros
+Os nomes de ficheiros/diretórios ou extensões de ficheiros listados no ficheiro .gitignore não serão adicionados em um repositório. Existem dois ficheiros .gitignore, são eles:
+
+Geral: Normalmente armazenado no diretório do usuário do Sistema Operacional. O ficheiro que possui a lista dos ficheiros/diretórios a serem ignorados por todos os repositórios deverá ser declarado conforme citado acima. O ficheiro não precisa ter o nome de .gitignore.
+
+Por repositório: Deve ser armazenado no diretório do repositório e deve conter a lista dos ficheiros/diretórios que devem ser ignorados apenas para o repositório específico.
+
+## Repositório Local
+
+### Criar novo repositório
+
+git init
+
+### Verificar estado dos ficheiros/diretórios
+
+git status
+
+## Adicionar ficheiro/diretório (staged area)
+
+### Adicionar um ficheiro em específico
+
+git add meu_ficheiro.txt
+
+### Adicionar um diretório em específico
+
+git add meu_diretorio
+
+### Adicionar todos os ficheiros/diretórios
+
+git add .	
+
+### Adicionar um ficheiro que esta listado no .gitignore (geral ou do repositório)
+
+git add -f ficheiro_no_gitignore.txt
+
+## Comitar ficheiro/diretório
+
+### Comitar um ficheiro
+
+git commit meu_ficheiro.txt
+
+### Comitar vários ficheiros
+
+git commit meu_ficheiro.txt meu_outro_ficheiro.txt
+
+### Comitar informando mensagem
+
+git commit meuficheiro.txt -m "minha mensagem de commit"
+
+## Remover ficheiro/diretório
+
+### Remover ficheiro
+
+git rm meu_ficheiro.txt
+
+### Remover diretório
+
+git rm -r diretorio
+
+## Visualizar histórico
+
+### Exibir histórico
+
+git log
+
+### Exibir histórico com diff das duas últimas alterações
+
+git log -p -2
+
+### Exibir resumo do histórico (hash completa, autor, data, comentário e qtde de alterações (+/-))
+
+git log --stat
+
+### Exibir informações resumidas em uma linha (hash completa e comentário)
+
+git log --pretty=oneline
+
+### Exibir histórico com formatação específica (hash abreviada, autor, data e comentário)
+
+git log --pretty=format:"%h - %an, %ar : %s"
+
+%h: Abreviação do hash;
+%an: Nome do autor;
+%ar: Data;
+%s: Comentário.
+
+## Verifique as demais opções de formatação no Git Book
+
+### Exibir histório de um ficheiro específico
+
+git log -- <caminho_do_ficheiro>
+
+### Exibir histórico de um ficheiro específico que contêm uma determinada palavra
+
+git log --summary -S<palavra> [<caminho_do_ficheiro>]
+
+### Exibir histórico modificação de um ficheiro
+
+git log --diff-filter=M -- <caminho_do_ficheiro>
+
+## O pode ser substituido por: Adicionado (A), Copiado (C), Apagado (D), Modificado (M), Renomeado (R), entre outros.
+
+### Exibir histório de um determinado autor
+
+git log --author=usuario
+
+### Exibir revisão e autor da última modificação de uma bloco de linhas
+
+git blame -L 12,22 meu_ficheiro.txt 
+
+## Desfazendo operações
+
+### Desfazendo alteração local (working directory)
+Este comando deve ser utilizando enquanto o ficheiro não foi adicionado na staged area.
+
+git checkout -- meu_ficheiro.txt
+
+## Desfazendo alteração local (staging area)
+Este comando deve ser utilizando quando o ficheiro já foi adicionado na staged area.
+
+git reset HEAD meu_ficheiro.txt
+
+Se o resultado abaixo for exibido, o comando reset não alterou o diretório de trabalho.
+
+Unstaged changes after reset:
+M	meu_ficheiro.txt
+
+### A alteração do diretório pode ser realizada através do comando abaixo:
+
+git checkout meu_ficheiro.txt
+
+## Repositório Remoto
+
+### Exibir os repositórios remotos
+git remote
+
+git remote -v
+
+### Vincular repositório local com um repositório remoto
+
+git remote add origin git@github.com:leocomelli/curso-git.git
+
+### Exibir informações dos repositórios remotos
+
+git remote show origin
+
+### Renomear um repositório remoto
+
+git remote rename origin curso-git
+
+### Desvincular um repositório remoto
+
+git remote rm curso-git
+
+## Enviar ficheiros/diretórios para o repositório remoto
+O primeiro push de um repositório deve conter o nome do repositório remoto e o branch.
+
+git push -u origin master
+
+Os demais pushes não precisam dessa informação
+
+git push
+
+## Atualizar repositório local de acordo com o repositório remoto
+
+### Atualizar os ficheiros no branch atual
+
+git pull
+
+### Buscar as alterações, mas não aplica-las no branch atual
+
+git fetch
+
+### Clonar um repositório remoto já existente
+
+git clone git@github.com:leocomelli/curso-git.git
+
+## Tags
+
+### Criando uma tag leve
+
+git tag vs-1.1
+
+### Criando uma tag anotada
+
+git tag -a vs-1.1 -m "Minha versão 1.1"
+
+### Criando uma tag assinada
+Para criar uma tag assinada é necessário uma chave privada (GNU Privacy Guard - GPG).
+
+git tag -s vs-1.1 -m "Minha tag assinada 1.1"
+
+### Criando tag a partir de um commit (hash)
+
+git tag -a vs-1.2 9fceb02
+
+### Criando tags no repositório remoto
+
+git push origin vs-1.2
+
+### Criando todas as tags locais no repositório remoto
+
+git push origin --tags
+
 ## Branches
 O **master** é o branch principal do GIT.
 
@@ -28,12 +257,12 @@ git checkout master
 ### Resolver merge entre os branches
 git merge nomeDaMinhaBranch
 
-Para realizar o merge, é necessário estar no branch que deverá receber as alterações. O merge pode automático ou manual. O merge automático será feito em arquivos textos que não sofreram alterações nas mesmas linhas, já o merge manual será feito em arquivos textos que sofreram alterações nas mesmas linhas.
+Para realizar o merge, é necessário estar no branch que deverá receber as alterações. O merge pode automático ou manual. O merge automático será feito em ficheiros textos que não sofreram alterações nas mesmas linhas, já o merge manual será feito em ficheiros textos que sofreram alterações nas mesmas linhas.
 
 A mensagem indicando um merge manual será:
 
-_Automerging meu_arquivo.txt
-CONFLICT (content): Merge conflict in meu_arquivo.txt
+_Automerging meu_ficheiro.txt
+CONFLICT (content): Merge conflict in meu_ficheiro.txt
 Automatic merge failed; fix conflicts and then commit the result._
 
 ### Apagando um branch
@@ -126,7 +355,7 @@ Atenção: É possível alterar a ordem dos commits ou remover um commit apenas 
 ### Juntando vários commits
 Seguir os mesmos passos acima, porém marcar os commtis que devem ser juntados com *squash
 
-### Remover todo histórico de um arquivo
+### Remover todo histórico de um ficheiro
 git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
 
 ## Bisect
@@ -146,13 +375,12 @@ git bisect good vs-1.1
 
 ### Marcar o commit como bom
 O GIT irá navegar entre os commits para ajudar a indentificar o commit que esta com o problema. Se o commit atual não estiver quebrado, então é necessário marca-lo como bom.
+git bisect good
 
-### git bisect good
-Marcar o commit como ruim
+### Marcar o commit como ruim
+Se o commit estiver com o problema, então ele deverá ser marcado como ruim.
 
-### Se o commit estiver com o problema, então ele deverá ser marcado como ruim.
-
-### git bisect bad
+git bisect bad
 
 ### Finalizar a pesquisa binária
 Depois de encontrar o commit com problema, para retornar para o HEAD utilize:
